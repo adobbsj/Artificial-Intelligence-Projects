@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  <category>
+    <pattern>*</pattern>
+    <template>I'm sorry I have no answer for that. Please type 'start' to begin.</template>
+  </category>
+  
+  <category>
+      <pattern>START</pattern>
+      <template><image>https://blog.edx.org/hubfs/Computer-Science-Career-Guide_Hero_1600x800.png</image>
+      Hello! I will be your WGU career counsellor. What is your name?
+      </template>
+  </category>
+  
+  <!-- Formal greetings to begin -->
+  <category>
+      <pattern>MY NAME IS * </pattern>
+      <template> Nice to meet you, <set name = "user"><star /></set>. Lets get you started on your career journey.
+      <delay>1</delay> Click begin when you are ready. 
+        <reply>
+          <text>BEGIN</text>
+            <postback>begin</postback>
+        </reply>
+      </template>
+  </category>
+  
+  <!-- Asks user if they are in computer science -->
+   <category>
+        <pattern>begin</pattern>
+        <template>Alright <get name = "user" />, are you a computer science major?<delay>1</delay>
+            <reply><text>Yes</text>
+                   <postback>yes</postback>
+            </reply>
+            <split/>
+            <reply><text>no</text>
+                   <postback>no</postback>
+            </reply>
+        </template>
+    </category>
+    
+    <!-- If they are not a computer science major -->
+    <category>
+        <pattern>NO</pattern>
+        <template>I'm sorry...<delay>1</delay>
+                  I can only provide assistance in regards to computer science.<delay>1</delay>
+                  Please contact your program mentor for more assistance.
+        </template>
+    </category>
+    
+    <!-- If they are a computer science major -->
+    <category>
+        <pattern>yes</pattern>
+        <template>That's great!<delay>1</delay>
+                  Computer science is a great career path to choose.<delay>2</delay>
+                  Tell me more... of the following options, which are you most interested in?<delay>1.5</delay>
+                  
+            <reply><text>Software Development</text>
+                   <postback>software development</postback>
+            </reply>
+            <reply><text>Data Management</text>
+                   <postback>data management</postback>
+            </reply>      
+            <reply><text>Cybersecurity</text>
+                   <postback>cybersecurity</postback>
+            </reply>         
+        </template>
+    </category>
+    
+    <!-- If the user selects cybersecurity -->
+    <category>
+        <pattern>cybersecurity</pattern>
+        <template>Cybersecurity is a challenging yet very rewarding pathway!<delay>1</delay>
+                  click below for more information about cybersecurity.
+                  <image>https://comptroller.texas.gov/economy/fiscal-notes/2022/jan/images/cybersecurity-hero.jpg</image>
+                  <button>
+                      <text>Cybersecurity guide</text>
+                      <url>https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm</url>
+                  </button><delay>1</delay>
+                  If you have any further questions, contact your program mentor for more assistance.
+        </template>
+    </category>
+    
+    <!-- If the user selects Data Management -->
+    <category>
+        <pattern>data management</pattern>
+        <template>There are many different directions you can go with data management, <get name = "user" />!<delay>1</delay>
+                  Tell me, which do you prefer?
+            <reply><text>SQL</text>
+                   <postback>sql</postback>
+            </reply>
+            <reply><text>Leadership</text>
+                   <postback>leadership</postback>
+            </reply>  
+        </template>
+    </category>
+    
+    <!-- SQL selection -->
+    <category>
+        <pattern>sql</pattern>
+        <template> Choosing SQL must mean you like to work with databases! <delay>1</delay>
+                   Here is a link to some additional information about data scientists/analysts.
+                   <image>https://www.edureka.co/blog/wp-content/uploads/2018/12/Data-Analytics-What-is-Data-Analytics-Edureka-1.png</image>
+                  <button>
+                      <text>Sql guide</text>
+                      <url>https://www.coursera.org/articles/what-does-a-data-analyst-do-a-career-guide</url>
+                  </button>
+            <delay>1</delay>
+                  If you have any further questions, contact your program mentor for more assistance.
+        </template>
+    </category>
+    
+    <!-- Leadership selection -->
+    <category>
+        <pattern>leadership</pattern>
+        <template>If you value strong leadership and reliability, then database administration might be the career for you! <delay>1</delay>
+                   Here is a link to some additional information about database administration.
+                   <image>https://resources.workable.com/wp-content/uploads/2013/08/database-administrator-640x230.jpg</image>
+                  <button>
+                      <text>Database Administration Guide</text>
+                      <url>https://resources.workable.com/database-administrator-job-description#:~:text=Database%20Administrators%20ensure%20that%20the,access%20this%20information%20when%20needed.</url>
+                  </button>
+            <delay>1</delay>
+                  If you have any further questions, contact your program mentor for more assistance.
+        </template>
+    </category>
+    
+    <!-- If the user selects Software Development -->
+    <category>
+        <pattern>software development</pattern>
+        <template> Software development is one of the top professions of computer science majors! <delay>1</delay>
+                   Which type of software developement is most appealing to you, <get name = "user" />?
+            <reply><text>Web Development/Front End</text>
+                   <postback>html</postback>
+            </reply>
+            <reply><text>Server Side/Backend</text>
+                   <postback>back end</postback>
+            </reply> 
+        </template>
+    </category>
+    
+    <!-- Front End selection -->
+    <category>
+        <pattern>html</pattern>
+        <template>Front end development is a great choice if you prefer to design things like websites and user interfaces. <delay>2</delay>
+                   Here is some some additional information about web development to get you started.
+                   <image>https://media.geeksforgeeks.org/wp-content/cdn-uploads/20201111215809/How-to-Become-a-Front-End-Developer-in-2020.png</image>
+                  <button>
+                      <text>Front End Development Guide</text>
+                      <url>https://www.coursera.org/articles/front-end-developer</url>
+                  </button>
+                <delay>1</delay>
+                  If you have any further questions, contact your program mentor for more assistance.
+        </template>
+    </category>
+    
+    <!-- Back End selection -->
+    <category>
+        <pattern>back end</pattern>
+        <template>Back end development is a great choice if you prefer to design things like websites and user interfaces. <delay>2</delay>
+                   Here is some some additional information about web back end development to get you started.
+                   <image>https://www.liveabout.com/thmb/z_RXiDK2cxFRjPzyWxBiAQLpWx8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/backenddeveloper-2502825a14ff440eb775dc4244e7ed4d.png</image>
+                  <button>
+                      <text>Back End Development Guide</text>
+                      <url>https://www.simplilearn.com/tutorials/programming-tutorial/what-is-backend-development</url>
+                  </button>
+                <delay>1</delay>
+                  If you have any further questions, contact your program mentor for more assistance.
+        </template>
+    </category>
+</aiml>
